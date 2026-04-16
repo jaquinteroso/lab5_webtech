@@ -1,2 +1,32 @@
-<h1>Vets#show</h1>
-<p>Find me in app/views/vets/show.html.erb</p>
+<div class="card shadow-sm p-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Dr. <%= "#{@vet.first_name} #{@vet.last_name}" %></h2>
+    <%= link_to 'Back to Vets', vets_path, class: "btn btn-outline-secondary btn-sm" %>
+  </div>
+  <hr>
+  <p><strong>Email:</strong> <%= @vet.email %></p>
+  <p><strong>Phone:</strong> <%= @vet.phone %></p>
+  <p><strong>Specialization:</strong> <%= @vet.specialization %></p>
+
+  <h3 class="mt-4">Scheduled Appointments</h3>
+  <table class="table table-sm mt-2">
+    <thead class="table-light">
+      <tr>
+        <th>Date</th>
+        <th>Pet</th>
+        <th>Reason</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @vet.appointments.each do |app| %>
+        <tr>
+          <td><%= app.date.strftime("%B %d, %Y") %></td>
+          <td><%= link_to app.pet.name, pet_path(app.pet) %></td>
+          <td><%= app.reason %></td>
+          <td><%= link_to "View", appointment_path(app), class: "btn btn-link btn-sm p-0" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

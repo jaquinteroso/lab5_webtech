@@ -1,2 +1,30 @@
-<h1>Owners#show</h1>
-<p>Find me in app/views/owners/show.html.erb</p>
+<div class="card shadow-sm p-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2><%= "#{@owner.first_name} #{@owner.last_name}" %></h2>
+    <%= link_to 'Back to Owners', owners_path, class: "btn btn-outline-secondary btn-sm" %>
+  </div>
+  <hr>
+  <p><strong>Email:</strong> <%= @owner.email %></p>
+  <p><strong>Phone:</strong> <%= @owner.phone %></p>
+  <p><strong>Address:</strong> <%= @owner.address %></p>
+
+  <h3 class="mt-4">Pets</h3>
+  <table class="table table-sm mt-2">
+    <thead class="table-light">
+      <tr>
+        <th>Name</th>
+        <th>Species</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @owner.pets.each do |pet| %>
+        <tr>
+          <td><%= pet.name %></td>
+          <td><%= pet.species %></td>
+          <td><%= link_to "View Pet", pet_path(pet), class: "btn btn-link btn-sm p-0" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
