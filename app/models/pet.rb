@@ -2,6 +2,8 @@ class Pet < ApplicationRecord
   belongs_to :owner
   has_many :appointments
 
+  before_save :capitalize_name
+
   validates :name, :owner, :date_of_birth, presence: true
   validates :species, inclusion: { in: %w[dog cat rabbit bird reptile other] }
   validates :weight, numericality: { greater_than: 0 }
@@ -13,5 +15,9 @@ class Pet < ApplicationRecord
     if date_of_birth.present? && date_of_birth > Date.today
       errors.add(:date_of_birth, "can't be in the future")
     end
+  end
+
+  def capitalize_name
+    self.name = name.capitalize if name.present?
   end
 end
