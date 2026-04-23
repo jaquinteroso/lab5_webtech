@@ -1,15 +1,11 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  phone: MyString
-  adress: MyText
+  first_name: "Jorge"
+  last_name: "Quinteros"
+  email: "jorge.test@uandes.cl" # Debe tener formato válido
+  phone: "+56912345678"
 
 two:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  phone: MyString
-  adress: MyText
+  first_name: "Mister"
+  last_name: "Error"
+  email: "mister.error@uandes.cl"
+  phone: "+56987654321"

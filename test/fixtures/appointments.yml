@@ -1,15 +1,14 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
+# test/fixtures/appointments.yml
 one:
-  pet_id: 1
-  vet_id: 1
-  date: 2026-04-09 08:52:58
-  reason: MyString
-  status: 1
+  date: <%= 1.day.from_now %>
+  reason: "Routine checkup"
+  status: scheduled
+  pet: one # <--- Esto debe coincidir con el nombre en pets.yml
+  vet: one # <--- Esto debe coincidir con el nombre en vets.yml
 
 two:
-  pet_id: 1
-  vet_id: 1
-  date: 2026-04-09 08:52:58
-  reason: MyString
-  status: 1
+  date: <%= 1.day.ago %>
+  reason: "Emergency"
+  status: completed
+  pet: one
+  vet: one
