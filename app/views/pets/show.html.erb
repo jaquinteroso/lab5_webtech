@@ -22,9 +22,16 @@
         <tr>
           <td><%= app.date.strftime("%B %d, %Y") %></td>
           <td><%= app.reason %></td>
-          <td><%= app.status_text %></td> <td><%= link_to "Details", appointment_path(app), class: "btn btn-link btn-sm p-0" %></td>
+          <td><%= app.status.titleize %></td> <td><%= link_to "Details", appointment_path(app), class: "btn btn-link btn-sm p-0" %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-</div>
+
+  <div class="mt-4">
+    <h4>Same species pets</h4>
+    <ul>
+      <% Pet.by_species(@pet.species).where.not(id: @pet.id).limit(5).each do |other_pet| %> <li><%= link_to other_pet.name, pet_path(other_pet) %></li>
+      <% end %>
+    </ul>
+  </div>

@@ -29,4 +29,17 @@
       <% end %>
     </tbody>
   </table>
+
+  <h3 class="mt-4">Upcoming Appointments</h3>
+  <ul>
+    <% @vet.appointments.upcoming.each do |app| %> <li><%= app.date.strftime("%B %d") %> - Pet: <%= app.pet.name %></li>
+    <% end %>
+  </ul>
+
+  <h3 class="mt-4">Past Consultations</h3>
+  <ul>
+    <% @vet.appointments.past.each do |app| %>
+      <li><%= app.date.strftime("%B %d, %Y") %> - <%= app.pet.name %></li>
+    <% end %>
+  </ul>
 </div>

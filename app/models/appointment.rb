@@ -4,13 +4,10 @@ class Appointment < ApplicationRecord
 
   has_many :treatments
 
-  def status_text
-    case status
-    when 0 then "Scheduled"
-    when 1 then "In Progress"
-    when 2 then "Completed"
-    when 3 then "Cancelled"
-    else "Unknown"
-    end
-  end
+  enum :status, { scheduled: 0, in_progress: 1, completed: 2, cancelled: 3 }
+
+  validates :date, :reason, :pet, :vet, :status, presence: true
+
+  scope :upcoming, -> { where("date > ?", Time.current). order(date: :asc) }
+  scope :past, -> { where("date <= ?", Time.current).order(date: :desc) }
 end
